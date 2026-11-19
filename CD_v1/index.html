@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CozyDaily — your space, your pace.">
+  <title>CozyDaily — Your space, your pace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="CozyDaily home">
+        <span class="brand-mark">☁</span>
+        <span class="brand-name">cozydaily</span>
+      </a>
+
+      <div class="sidebar-label">YOUR SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">⌂</span> Dashboard</button>
+        <button class="nav-link" data-page="planner"><span class="nav-icon">▦</span> My planner</button>
+        <button class="nav-link" data-page="habits"><span class="nav-icon">✿</span> Habits</button>
+        <button class="nav-link" data-page="journal"><span class="nav-icon">♡</span> Journal</button>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-tip">
+        <span class="tip-sparkle">✧</span>
+        <p class="tip-title">A gentle reminder</p>
+        <p class="tip-copy">Small steps are still progress. Take your time.</p>
+      </div>
+      <button class="nav-link settings-link" data-page="settings"><span class="nav-icon">⚙</span> Settings</button>
+      <div class="profile-mini">
+        <div class="avatar">C</div>
+        <div><strong>My cozy space</strong><span>Personal account</span></div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span>My space</span><span class="crumb-slash">/</span><strong id="pageName">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <span class="today-pill" id="todayPill">Today</span>
+          <button class="icon-button" id="themeToggle" aria-label="Switch theme" title="Switch light/dark theme"><span id="themeIcon">☾</span></button>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <!-- DASHBOARD -->
+        <section class="page active" id="page-dashboard">
+          <div class="welcome-banner">
+            <div class="welcome-text">
+              <p class="eyebrow" id="welcomeDate">A LITTLE SPACE FOR YOU</p>
+              <h1>Make today<br>a little <em>cozier.</em></h1>
+              <p class="welcome-subtitle">A little space to plan, grow, and enjoy life — one day at a time.</p>
+              <button class="button button-dark" data-go="planner">Plan my day <span>→</span></button>
+            </div>
+            <div class="banner-art" aria-hidden="true">
+              <div class="art-sun"></div><div class="art-cloud cloud-a"></div><div class="art-cloud cloud-b"></div>
+              <div class="art-flower">✿</div>
+              <div class="art-note">slow mornings<br>& small steps</div>
+            </div>
+            <span class="banner-decoration">✧</span>
+          </div>
+
+          <div class="section-title-row">
+            <div><p class="eyebrow">A FRESH START</p><h2>Your day at a glance</h2></div>
+            <span class="date-label" id="fullDate">Today</span>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel progress-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">DAILY PLANNER</p><h3>Today's progress</h3></div><span class="panel-symbol">✦</span></div>
+              <div class="progress-summary">
+                <div><strong class="big-number" id="dashTaskCount">0/0</strong><p class="muted">little things done</p></div>
+                <div class="progress-circle" id="dashProgressCircle"><span id="dashProgressPercent">0%</span></div>
+              </div>
+              <div class="progress-line"><span id="dashProgressBar"></span></div>
+              <p class="soft-note">You're doing lovely. Keep going at your own pace. ♡</p>
+              <button class="text-button" data-go="planner">View my tasks →</button>
+            </article>
+
+            <article class="panel tasks-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">YOUR TO-DO LIST</p><h3>Little tasks</h3></div><span class="panel-symbol">♡</span></div>
+              <ul class="mini-task-list" id="dashboardTasks"></ul>
+              <button class="text-button" data-go="planner">See all tasks →</button>
+            </article>
+
+            <article class="panel habits-panel">
+              <div class="panel-heading"><div><p class="panel-kicker">GROW A LITTLE EVERY DAY</p><h3>My habits</h3></div><span class="panel-symbol">✿</span></div>
+              <div id="dashboardHabits" class="mini-habits"></div>
+              <button class="text-button" data-go="habits">Visit my habits →</button>
+            </article>
+
+            <article class="panel quote-panel">
+              <span class="quote-mark">“</span>
+              <p class="quote-text">You don't have to bloom every day. Rest is part of growing, too.</p>
+              <p class="quote-caption">A LITTLE REMINDER FOR YOU</p>
+              <button class="text-button" data-go="journal">Write in my journal →</button>
+            </article>
+          </div>
+          <div class="bottom-message"><span>☁</span> Remember: your space, your pace. There's no rush.</div>
+        </section>
+
+        <!-- PLANNER -->
+        <section class="page" id="page-planner">
+          <div class="page-intro">
+            <p class="eyebrow">ONE THING AT A TIME</p>
+            <h1>My <em>planner.</em></h1>
+            <p class="welcome-subtitle">A little list to help you make room for what matters.</p>
+          </div>
+          <div class="panel planner-panel">
+            <div class="panel-heading"><div><p class="panel-kicker">YOUR DAILY LIST</p><h3>Tasks for today</h3></div><span class="date-label" id="plannerDate">Today</span></div>
+            <form id="taskForm" class="add-form">
+              <input id="taskInput" type="text" maxlength="90" placeholder="Add a little task..." aria-label="New task" required>
+              <select id="taskCategory" aria-label="Task category">
+                <option>Personal</option><option>Study</option><option>Work</option><option>Self-care</option>
+              </select>
+              <button class="button button-dark" type="submit">＋ Add task</button>
+            </form>
+            <div class="task-filter-row">
+              <span id="taskSummary" class="muted">Your tasks will appear here.</span>
+              <button class="text-button" id="clearCompleted" type="button">Clear completed</button>
+            </div>
+            <ul class="full-task-list" id="fullTaskList"></ul>
+            <div class="empty-state" id="taskEmpty"><span>☁</span><strong>Your list is looking peaceful.</strong><p>Add a task whenever you're ready.</p></div>
+          </div>
+        </section>
+
+        <!-- HABITS -->
+        <section class="page" id="page-habits">
+          <div class="page-intro">
+            <p class="eyebrow">TINY STEPS, BIG GROWTH</p>
+            <h1>My habit <em>garden.</em></h1>
+            <p class="welcome-subtitle">Little routines can grow into lovely things.</p>
+          </div>
+          <div class="habit-overview">
+            <div class="panel garden-card">
+              <div class="garden-illustration">🌱</div>
+              <div><p class="panel-kicker">TODAY'S GROWTH</p><h3 id="habitCount">0 habits completed</h3><p class="muted">Every small effort counts.</p></div>
+            </div>
+            <div class="panel streak-card"><span class="streak-icon">✧</span><p class="panel-kicker">YOUR GENTLE GOAL</p><h3>Show up for yourself</h3><p class="muted">Consistency over perfection.</p></div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading"><div><p class="panel-kicker">YOUR ROUTINE</p><h3>Habits to nurture</h3></div></div>
+            <form id="habitForm" class="add-form habit-add-form">
+              <input id="habitInput" type="text" maxlength="70" placeholder="Add a new habit..." aria-label="New habit" required>
+              <button class="button button-dark" type="submit">＋ Add habit</button>
+            </form>
+            <div class="habit-list" id="habitList"></div>
+          </div>
+        </section>
+
+        <!-- JOURNAL -->
+        <section class="page" id="page-journal">
+          <div class="page-intro">
+            <p class="eyebrow">A MOMENT FOR YOURSELF</p>
+            <h1>Dear <em>journal.</em></h1>
+            <p class="welcome-subtitle">No pressure, no perfect words. Just a space to let it out.</p>
+          </div>
+          <div class="journal-layout">
+            <div class="panel journal-editor">
+              <p class="panel-kicker">TODAY'S ENTRY</p>
+              <h3>How are you feeling?</h3>
+              <div class="mood-picker" role="group" aria-label="Choose your mood">
+                <button type="button" class="mood-button selected" data-mood="Calm">☁️<span>Calm</span></button>
+                <button type="button" class="mood-button" data-mood="Happy">🌷<span>Happy</span></button>
+                <button type="button" class="mood-button" data-mood="Tired">🌙<span>Tired</span></button>
+                <button type="button" class="mood-button" data-mood="Unsure">🍃<span>Unsure</span></button>
+              </div>
+              <label class="journal-label" for="journalTitle">A title for today (optional)</label>
+              <input class="journal-title-input" id="journalTitle" type="text" placeholder="A small moment...">
+              <label class="journal-label" for="journalContent">Your thoughts</label>
+              <textarea id="journalContent" rows="8" placeholder="Dear journal, today I..."></textarea>
+              <div class="journal-actions"><span class="muted" id="journalStatus">Your entry is saved on this device.</span><button class="button button-dark" id="saveJournal" type="button">Save entry ♡</button></div>
+            </div>
+            <aside class="panel journal-prompt"><span class="prompt-icon">✧</span><p class="panel-kicker">A LITTLE PROMPT</p><h3>What is one small thing that made you smile today?</h3><p class="muted">You can write a sentence, a paragraph, or just a few words. This space is yours.</p></aside>
+          </div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section class="page" id="page-settings">
+          <div class="page-intro">
+            <p class="eyebrow">MAKE YOURSELF AT HOME</p>
+            <h1>Your <em>settings.</em></h1>
+            <p class="welcome-subtitle">Make CozyDaily feel a little more like you.</p>
+          </div>
+          <div class="panel settings-panel">
+            <div class="settings-row"><div><h3>Appearance</h3><p class="muted">Choose how CozyDaily looks on this device.</p></div>
+              <div class="theme-options">
+                <button class="theme-option" data-set-theme="light">☀ Light</button>
+                <button class="theme-option" data-set-theme="dark">☾ Dark</button>
+                <button class="theme-option" data-set-theme="system">▣ System</button>
+              </div>
+            </div>
+            <div class="settings-row"><div><h3>Your data</h3><p class="muted">Your demo tasks, habits and journal entry are stored in this browser.</p></div><button class="button button-outline" id="resetData">Reset demo data</button></div>
+            <p class="settings-footnote">This starter version does not have user accounts or cloud sync yet. Your information stays in this browser's local storage.</p>
+          </div>
+        </section>
+      </div>
+      <footer class="footer">made with ♡ by cozydaily</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
